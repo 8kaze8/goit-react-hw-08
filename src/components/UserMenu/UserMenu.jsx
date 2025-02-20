@@ -9,7 +9,11 @@ const UserMenu = () => {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
       <p>Welcome, {user.name}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
+      <button
+        type="button"
+        onClick={() => dispatch(logOut())}
+        style={{ color: "white" }}
+      >
         Logout
       </button>
     </div>
