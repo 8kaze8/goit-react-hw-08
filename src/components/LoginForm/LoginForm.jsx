@@ -38,7 +38,9 @@ const LoginForm = () => {
             )}
           </div>
 
-          <button type="submit">Log In</button>
+          <button type="submit" style={{ color: "white" }}>
+            Log In
+          </button>
         </Form>
       )}
     </Formik>

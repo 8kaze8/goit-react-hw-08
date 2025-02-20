@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { register } from "../../redux/auth/operations";
+import { useState } from "react";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Required"),
@@ -13,10 +14,19 @@ const validationSchema = Yup.object({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
-    resetForm();
+  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    try {
+      const resultAction = await dispatch(register(values)).unwrap();
+      resetForm();
+      setError(null);
+    } catch (err) {
+      setError(
+        "This email is already registered. Please use a different email or try logging in."
+      );
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -25,8 +35,12 @@ const RegistrationForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, isSubmitting }) => (
         <Form>
+          {error && (
+            <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+          )}
+
           <div>
             <label htmlFor="name">Name</label>
             <Field name="name" type="text" />
@@ -47,7 +61,13 @@ const RegistrationForm = () => {
             )}
           </div>
 
-          <button type="submit">Register</button>
+          <button
+            type="submit"
+            style={{ color: "white" }}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Registering..." : "Register"}
+          </button>
         </Form>
       )}
     </Formik>
