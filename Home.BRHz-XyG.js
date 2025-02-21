@@ -1,0 +1,1 @@
+import{j as e}from"./index.GHgmdQkP.js";const t=()=>e.jsxs("div",{style:{textAlign:"center"},children:[e.jsx("h1",{children:"Welcome to Phonebook"}),e.jsx("p",{children:"Please log in to manage your contacts"})]});export{t as default};
