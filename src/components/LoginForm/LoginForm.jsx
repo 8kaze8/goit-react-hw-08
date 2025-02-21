@@ -38,7 +38,18 @@ const LoginForm = () => {
             )}
           </div>
 
-          <button type="submit" style={{ color: "white" }}>
+          <button
+            type="submit"
+            style={{
+              marginTop: "15px",
+              padding: "5px 15px",
+              backgroundColor: "black",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
             Log In
           </button>
         </Form>

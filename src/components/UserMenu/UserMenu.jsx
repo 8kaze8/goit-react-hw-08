@@ -12,7 +12,14 @@ const UserMenu = () => {
       <button
         type="button"
         onClick={() => dispatch(logOut())}
-        style={{ color: "white" }}
+        style={{
+          padding: "5px 15px",
+          backgroundColor: "black",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
       >
         Logout
       </button>
